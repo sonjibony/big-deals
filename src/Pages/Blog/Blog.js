@@ -36,8 +36,11 @@ const Blog = () => {
         </div>
         <div className="collapse-content bg-primary text-primary-content peer-checked:bg-gradient-to-r from-primary to-secondary peer-checked:text-secondary-content text-lg">
           <p>
-            
-          The Prototypal Inheritance is a feature in javascript used to add methods and properties in objects. It is a method by which an object can inherit the properties and methods of another object. Traditionally, in order to get and set the Prototype of an object, we use Object. getPrototypeOf and Object.
+            The Prototypal Inheritance is a feature in javascript used to add
+            methods and properties in objects. It is a method by which an object
+            can inherit the properties and methods of another object.
+            Traditionally, in order to get and set the Prototype of an object,
+            we use Object. getPrototypeOf and Object.
           </p>
         </div>
       </div>
@@ -48,7 +51,11 @@ const Blog = () => {
         </div>
         <div className="collapse-content bg-primary text-primary-content peer-checked:bg-gradient-to-r from-primary to-secondary peer-checked:text-secondary-content text-lg">
           <p>
-          The main objective of unit testing is to isolate written code to test and determine if it works as intended. Unit testing is an important step in the development process, we should write them because if done correctly, it can help detect early flaws in code which may be more difficult to find in later testing stages.
+            The main objective of unit testing is to isolate written code to
+            test and determine if it works as intended. Unit testing is an
+            important step in the development process, we should write them
+            because if done correctly, it can help detect early flaws in code
+            which may be more difficult to find in later testing stages.
           </p>
         </div>
       </div>
@@ -59,7 +66,11 @@ const Blog = () => {
         </div>
         <div className="collapse-content bg-primary text-primary-content peer-checked:bg-gradient-to-r from-primary to-secondary peer-checked:text-secondary-content text-lg">
           <p>
-          Both - Angular JS and React JS frameworks are used to create web interfaces for front end development. Angular is Google's matured and advanced JavaScript framework based on TypeScript, whereas Vue is a progressive open-source front-end JavaScript framework created by Evan You.
+            Both - Angular JS and React JS frameworks are used to create web
+            interfaces for front end development. Angular is Google's matured
+            and advanced JavaScript framework based on TypeScript, whereas Vue
+            is a progressive open-source front-end JavaScript framework created
+            by Evan You.
           </p>
         </div>
       </div>

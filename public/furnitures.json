@@ -1,0 +1,18 @@
+[
+    {
+        "_id":"01",
+        "categoryNo": "1",
+        "name": "Leather Sofa",
+        "img": "https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?cs=srgb&dl=pexels-martin-p%C3%A9chy-1866149.jpg&fm=jpg&h=300&w=550&fit=crop&_gl=1*1v00n8g*_ga*NDAwNTIyNDM1LjE2NTg5OTQ3NzI.*_ga_8JE65Q40S6*MTY2OTIzMTMzMC4xOS4xLjE2NjkyMzEzNjkuMC4wLjA.",
+        "location": "Mirpur",
+        "used": "3",
+        "resalePrice": "300",
+        "originalPrice": "600",
+        "seller": "Joe",
+        "time": "2.00",
+        "condition": "Good",
+        "year": "2019",
+        "mobile": "01234",
+        "description": "Selling it because its an old model. Its condition is still good as new."
+    }
+]

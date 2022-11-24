@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../../contexts/AuthProvider";
 import toast from "react-hot-toast";
+import useToken from "../../hooks/useToken";
 
 const SignUp = () => {
   const {
@@ -12,7 +13,14 @@ const SignUp = () => {
   } = useForm();
   const [signUpError, setSignUpError] = useState("");
   const { createUser, updateUser } = useContext(AuthContext);
+  const [createdUserEmail, setCreatedUserEmail]= useState('');
+  const [token] = useToken(createdUserEmail);
   const navigate = useNavigate();
+
+if(token){
+  navigate('/');
+}
+
   //implementing sign up
   const handleSignUp = (data) => {
     setSignUpError("");
@@ -37,7 +45,7 @@ const SignUp = () => {
       });
   };
 
-  //saving user in bd
+  //saving user in db
   const saveUser = (name,email,option) =>{
     const user = {name, email, option};
     fetch('http://localhost:5000/users',{
@@ -49,11 +57,14 @@ const SignUp = () => {
     })
     .then(res => res.json())
     .then(data => {
-      console.log('saved user',data);
-      navigate("/");
+      setCreatedUserEmail(email);
+      // console.log('saved user',data);
+      // navigate("/");
 
     })
   }
+
+
 
 
   return (

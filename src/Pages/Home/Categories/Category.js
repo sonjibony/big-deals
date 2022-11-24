@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import BookingModal from './BookingModal/BookingModal';
 import FurnitureCard from './FurnitureCard';
 
 const Category = () => {
 
+    const [booking,setBooking] = useState(null);
     const allFurniture = useLoaderData();
 
 
@@ -17,10 +19,17 @@ const Category = () => {
                     allFurniture.map(furniture => <FurnitureCard
                     key={furniture._id}
                     furniture={furniture}
+                    setBooking={setBooking}
                     ></FurnitureCard>)
                 }
             </div>
-            
+{ 
+booking    &&      
+ <BookingModal
+            booking={booking}
+            setBooking={setBooking}
+            ></BookingModal>
+            }
         </div>
     );
 };

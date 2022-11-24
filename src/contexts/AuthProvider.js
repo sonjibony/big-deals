@@ -33,7 +33,7 @@ const signIn = (email,password) =>{
 
 //update user
 const updateUser = (userInfo) =>{
-    return updateProfile(user, userInfo);
+    return updateProfile(auth.currentUser, userInfo);
 }
 
 //sign out

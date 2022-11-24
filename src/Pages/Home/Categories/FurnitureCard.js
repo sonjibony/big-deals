@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const FurnitureCard = ({ furniture }) => {
+const FurnitureCard = ({ furniture, setBooking }) => {
   const {
     name,
     img,
@@ -71,7 +71,13 @@ const FurnitureCard = ({ furniture }) => {
         </div>
         <hr className="mt-5" />
         <div className="card-actions justify-evenly">
-          <button className="btn btn-sm btn-accent">Book Now</button>
+          
+          <label 
+          htmlFor="booking-modal" 
+          className="btn btn-sm btn-accent"
+          onClick={() => setBooking(furniture)}
+          >Book Now</label>
+
           <Link to='/'>
           <button className="btn btn-sm btn-accent">Go Back</button>
           </Link>

@@ -1,32 +1,22 @@
 [
-    {
-        "categoryNo": "1",
-        "name": "Sofa-  Set",
-        "img": "https://cdn-icons-png.flaticon.com/512/3351/3351467.png"
-
-    },
-    {
-        "categoryNo": "2",
-        "name": "Bed",
-        "img": "https://cdn-icons-png.flaticon.com/512/564/564029.png"
-
-    },
-    {
-        "categoryNo": "3",
-        "name": "Chair",
-        "img": "https://cdn-icons-png.flaticon.com/512/1081/1081574.png"
-
-    },
-    {
-        "categoryNo": "4",
-        "name": "Table & Tools",
-        "img": "https://cdn-icons-png.flaticon.com/512/1889/1889035.png"
-
-    },
-    {
-        "categoryNo": "5",
-        "name": "Decoration",
-        "img": "https://cdn-icons-png.flaticon.com/512/3722/3722767.png"
-
-    }
+  {
+    "categoryNo": "1",
+    "name": "Sofa-Set",
+    "img": "https://cdn-icons-png.flaticon.com/512/3351/3351467.png"
+  },
+  {
+    "categoryNo": "2",
+    "name": "Bed",
+    "img": "https://cdn-icons-png.flaticon.com/512/564/564029.png"
+  },
+  {
+    "categoryNo": "3",
+    "name": "Chair",
+    "img": "https://cdn-icons-png.flaticon.com/512/1081/1081574.png"
+  },
+  {
+    "categoryNo": "4",
+    "name": "Table & Tools",
+    "img": "https://cdn-icons-png.flaticon.com/512/1889/1889035.png"
+  }
 ]

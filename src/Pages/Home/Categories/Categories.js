@@ -1,24 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import React from 'react';
 import Category from './CategoryCard';
 
 const Categories = () => {
 
-const [categories,setCategories] = useState([])
 
-useEffect(() => {
-    fetch('categories.json')
+//using react query    
+const {data: categories =[], isLoading} = useQuery({
+    queryKey: ['category'],
+    queryFn: () => fetch('http://localhost:5000/category')
     .then(res => res.json())
-    .then(data => {
-        setCategories(data)
-    }, [])
-})
+});
+if(isLoading){
+    return <button className="btn btn-square loading"></button>;
+}
+
+
 
     return (
         <div>
         
              <div className="divider w-1/2 mx-auto">Best Items</div>
              <h1 className="text-4xl font-bold text-center">CATEGORY</h1>
- <div className=' my-6 grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5'>
+ <div className=' my-6 grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
 {
     categories.map(category => <Category
     key={category.categoryNo}

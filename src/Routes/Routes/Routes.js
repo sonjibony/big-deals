@@ -20,7 +20,9 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
             },
             {
                 path: '/category/:id',
-                element: <PrivateRoute><Category></Category></PrivateRoute>
+                element: <PrivateRoute><Category></Category></PrivateRoute>,
+                loader: ({ params }) =>
+              fetch(`http://localhost:5000/category/${params.id}`),
             },
             {
                 path: '/login',

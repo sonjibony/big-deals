@@ -5,7 +5,7 @@ import Category from './CategoryCard';
 const Categories = () => {
 
 
-//using react query    
+    //using react query
 const {data: categories =[], isLoading} = useQuery({
     queryKey: ['category'],
     queryFn: () => fetch('http://localhost:5000/category')

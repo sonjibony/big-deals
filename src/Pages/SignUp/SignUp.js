@@ -12,10 +12,9 @@ const SignUp = () => {
   } = useForm();
   const [signUpError, setSignUpError] = useState("");
   const { createUser, updateUser } = useContext(AuthContext);
-const navigate = useNavigate();
+  const navigate = useNavigate();
   //implementing sign up
   const handleSignUp = (data) => {
-
     setSignUpError("");
     createUser(data.email, data.password)
       .then((result) => {
@@ -23,21 +22,39 @@ const navigate = useNavigate();
         console.log(user);
         toast("User Created Successfully");
         const userInfo = {
-          displayName: data.name
+          displayName: data.name,
         };
 
         updateUser(userInfo)
           .then(() => {
-navigate('/');
-
+            saveUser(data.name,data.email,data.option);
           })
           .catch((error) => console.log(error));
       })
       .catch((error) => {
-        console.error(error);
+        console.log(error);
         setSignUpError(error.message);
       });
   };
+
+  //saving user in bd
+  const saveUser = (name,email,option) =>{
+    const user = {name, email, option};
+    fetch('http://localhost:5000/users',{
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log('saved user',data);
+      navigate("/");
+
+    })
+  }
+
 
   return (
     <div className="h-[800px]  flex justify-center items-center">

@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import Main from "../../Layout/Main";
 import Blog from "../../Pages/Blog/Blog";
-import Dashboard from "../../Pages/Dashboard/Dashboard";
+import MyBookings from "../../Pages/Dashboard/MyBookings/MyBookings";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Category from "../../Pages/Home/Categories/Category";
 import Home from "../../Pages/Home/Home/Home";
@@ -49,7 +49,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
         children: [
             {
                 path: '/dashboard',
-                element: <Dashboard></Dashboard>
+                element:<MyBookings></MyBookings>
             }
         ]
     }

@@ -1,20 +1,52 @@
-import React, { useState } from "react";
+import { GoogleAuthProvider } from "firebase/auth";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
 const Login = () => {
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const [loginError, setLoginError] = useState('');
 
+  const [loginError, setLoginError] = useState('');
+const {providerLogin, signIn} = useContext(AuthContext);
+const location = useLocation();
+const navigate = useNavigate();
+
+const from = location.state?.from?.pathname || '/'
+
+//creating google provider
+const googleProvider = new GoogleAuthProvider();
+
+//implementing google sign in
+const onGoogleSignIn = () => {
+  providerLogin(googleProvider)
+    .then((result) => {
+      const user = result.user;
+      console.log(user);
+      navigate(from, { replace: true });
+    })
+    .catch((error) => console.error(error));
+};
 
   //implementing login
   const handleLogin = data =>{
 console.log(data);
-  }
-
+setLoginError('');
+signIn(data.email, data.password)
+.then(result => {
+    const user = result.user;
+    console.log(user);
+    navigate(from, {replace: true})
+})
+.catch(error => {
+    console.log(error.message)
+    setLoginError(error.message);
+    
+  })
+}
   return (
     <div className="h-[800px]  flex justify-center items-center">
       <div className="w-96 p-7">
@@ -77,7 +109,8 @@ console.log(data);
           </Link>
         </p>
         <div className="divider">OR</div>
-        <button className="btn btn-outline btn-accent  w-full">
+        <button onClick={onGoogleSignIn}
+ className="btn btn-outline btn-accent  w-full">
           CONTINUE WITH GOOGLE
         </button>
       </div>

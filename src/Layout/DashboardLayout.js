@@ -22,13 +22,13 @@ const DashboardLayout = () => {
               <Link to="/dashboard">My Booked Furniture</Link>
             </li>
             <li>
-              <Link to="/users">All Sellers</Link>
+              <Link to="/dashboard/sellers">All Sellers</Link>
             </li>
             <li>
-              <Link to="/buyers">All Buyers</Link>
+              <Link to="/dashboard/buyers">All Buyers</Link>
             </li>
             <li>
-              <Link to="/reportedItems">Reported Items</Link>
+              <Link to="/dashboard/reportedItems">Reported Items</Link>
             </li>
             {/* {
         isAdmin && <>

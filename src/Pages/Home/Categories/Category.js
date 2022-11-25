@@ -6,7 +6,7 @@ import FurnitureCard from './FurnitureCard';
 const Category = () => {
 
     const [booking,setBooking] = useState(null);
-    console.log(booking?.name);
+    // console.log(booking?.name);
     const allFurniture = useLoaderData();
 
 

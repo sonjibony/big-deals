@@ -32,10 +32,10 @@ import SellerRoute from "../SellerRoute/SellerRoute";
                 element: <Home></Home>,
             },
             {
-                path: '/category/:id',
+                path: '/furniture/:name',
                 element: <PrivateRoute><Category></Category></PrivateRoute>,
                 loader: ({ params }) =>
-              fetch(`http://localhost:5000/category/${params.id}`),
+              fetch(`http://localhost:5000/furniture/${params.name}`),
             },
             {
                 path: '/login',

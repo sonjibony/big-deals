@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import BookingModal from './BookingModal/BookingModal';
@@ -9,6 +10,11 @@ const Category = () => {
     // console.log(booking?.name);
     const allFurniture = useLoaderData();
 
+    // const { data: allFurniture = [], isLoading } = useQuery({
+    //     queryKey: ["category"],
+    //     queryFn: () =>
+    //       fetch(`http://localhost:5000/furniture/${allFurniture}`).then((res) => res.json()),
+    //   });
 
 
     return (

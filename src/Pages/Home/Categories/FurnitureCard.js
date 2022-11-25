@@ -19,7 +19,7 @@ const FurnitureCard = ({ furniture, setBooking }) => {
   return (
     <div className="card rounded  lg:card-side bg-base-100 ">
       <figure>
-        <img className="rounded" src={img} alt="Album" />
+        <img className="rounded max-w-[500px]" src={img} alt="Album" />
       </figure>
       <div className="card-body">
         <div className="flex justify-between items-center">

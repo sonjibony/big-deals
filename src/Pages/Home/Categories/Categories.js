@@ -11,9 +11,9 @@ const {data: categories =[], isLoading} = useQuery({
     queryFn: () => fetch('http://localhost:5000/category')
     .then(res => res.json())
 });
-if(isLoading){
-    return <button className="btn btn-square loading"></button>;
-}
+if (isLoading) {
+    return <button className=" m-72 btn btn-square loading"></button>;
+  }
 
 
 

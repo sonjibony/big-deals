@@ -32,11 +32,11 @@ if(token){
         toast("User Created Successfully");
         const userInfo = {
           displayName: data.name,
-        };
+        }
         updateUser(userInfo)
           .then(() => {
             saveUser(data.name,data.email,data.option);
-            setCreatedUserEmail(data.email);
+            // setCreatedUserEmail(data.email);
           })
           .catch((error) => console.log(error));
       })

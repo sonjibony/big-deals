@@ -62,6 +62,10 @@ const handleDeleteBuyer = buyer =>{
           toast.success('deleted successfully')
       }
   })
+
+//handle role
+
+
   }
 
   return (

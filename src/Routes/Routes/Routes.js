@@ -12,6 +12,7 @@ import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import SignUp from "../../Pages/SignUp/SignUp";
 import AdminRoute from "../AdminRoute/AdminRoute";
+import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
  const router = createBrowserRouter([
@@ -53,7 +54,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
         children: [
             {
                 path: '/dashboard',
-                element:<MyBookings></MyBookings>
+                element:<BuyerRoute><MyBookings></MyBookings></BuyerRoute>
             },
             {
                 path: '/dashboard/buyers',

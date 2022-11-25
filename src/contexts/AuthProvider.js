@@ -46,7 +46,7 @@ const logOut = () => {
 //observer
 useEffect( () =>{
 const unsubscribe = onAuthStateChanged(auth, currentUser  =>{
-console.log('user observing', currentUser);
+// console.log('user observing', currentUser);
 setUser(currentUser);
 setLoading(false);
  });

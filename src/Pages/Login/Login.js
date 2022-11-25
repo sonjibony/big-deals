@@ -19,10 +19,9 @@ const Login = () => {
   const navigate = useNavigate();
 
   const from = location.state?.from?.pathname || "/";
-  if(token){
-    navigate(from, {replace: true});
-  
-  }
+  // if (token) {
+  //   navigate(from, { replace: true });
+  // }
 
   //creating google provider
   const googleProvider = new GoogleAuthProvider();
@@ -31,22 +30,36 @@ const Login = () => {
   const onGoogleSignIn = () => {
     providerLogin(googleProvider)
       .then((result) => {
-        const user = result.user;
-        console.log(user);
-        navigate(from, { replace: true });
+        const { name, email } = result.user;
+        const user = { name, email, option: "buyer" };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            setLoginUserEmail(email);
+            // console.log('saved user',data);
+            // navigate("/");
+            navigate(from, { replace: true });
+          });
       })
       .catch((error) => console.error(error));
   };
 
   //implementing login
   const handleLogin = (data) => {
-    console.log(data);
+    // console.log(data);
     setLoginError("");
     signIn(data.email, data.password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
-        setLoginUserEmail(data.email)
+        // console.log(user);
+        setLoginUserEmail(data.email);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error.message);
@@ -105,7 +118,7 @@ const Login = () => {
           </div>
         </form>
         <p>
-          New to Brush N Floss?{" "}
+          New to Big Deal?{" "}
           <Link className="text-accent font-extrabold" to="/signup">
             Create an account
           </Link>

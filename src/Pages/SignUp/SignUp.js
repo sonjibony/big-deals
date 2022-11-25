@@ -1,3 +1,4 @@
+
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -32,10 +33,10 @@ if(token){
         const userInfo = {
           displayName: data.name,
         };
-
         updateUser(userInfo)
           .then(() => {
             saveUser(data.name,data.email,data.option);
+            setCreatedUserEmail(data.email);
           })
           .catch((error) => console.log(error));
       })

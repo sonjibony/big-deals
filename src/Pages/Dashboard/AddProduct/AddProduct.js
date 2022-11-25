@@ -36,6 +36,8 @@ const AddProduct = () => {
       seller: data.seller,
       used: data.used,
       year: data.used,
+      gmail: data.gmail,
+      test:data.test
     };
     console.log(furniture);
 
@@ -84,6 +86,10 @@ const AddProduct = () => {
           />
           {errors.name && <p className="text-red-600">{errors.name.message}</p>}
         </div>
+
+
+
+        
 
         <div className="form-control w-full max-w-xs">
           <label className="label">
@@ -211,6 +217,20 @@ const AddProduct = () => {
 
         <div className="form-control w-full max-w-xs">
           <label className="label">
+            <span className="label-text">Gmail</span>
+          </label>
+          <input
+          defaultValue={user?.email}
+            // type="gmail"
+            {...register("gmail")}
+            className="input input-bordered w-full max-w-xs"
+            readOnly
+          />
+          {/* {errors.name && <p className="text-red-600">{errors.name.message}</p>} */}
+        </div>
+
+        <div className="form-control w-full max-w-xs">
+          <label className="label">
             <span className="label-text">Contact No</span>
           </label>
           <input
@@ -257,7 +277,7 @@ const AddProduct = () => {
 
         <input
           className="btn btn-accent w-full mt-4 mb-2 mx-auto"
-          value="Add Doctor"
+          value="Add Product"
           type="submit"
         />
         {/* {signUpError && <p className="text-red-600">{signUpError}</p>} */}

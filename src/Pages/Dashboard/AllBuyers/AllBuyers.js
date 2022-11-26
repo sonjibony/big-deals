@@ -11,6 +11,7 @@ const AllBuyers = () => {
     setDeletingBuyer(null);
   };
 
+  //fetching data using react query
   const {
     data: buyers = [],
     refetch,
@@ -24,44 +25,26 @@ const AllBuyers = () => {
     },
   });
 
+  //spinner
   if (isLoading) {
     return <button className=" m-72 btn btn-square loading"></button>;
   }
 
-  //verifying buyers
-  const handleVerification = (id) => {
-    fetch(`http://localhost:5000/users/${id}`, {
-      method: "PUT",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.modifiedCount > 0) {
-          toast.success("Verified Successfully");
-          refetch();
-        }
-      });
-  };
-
-  //implementing delete
+  //implementing delete buyers
   const handleDeleteBuyer = (buyer) => {
     fetch(`http://localhost:5000/users/${buyer._id}`, {
       method: "DELETE",
       // headers: {
-      //     authorization: `bearer ${localStorage.getItem('accessToken')}`
-      // }
+      //   authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      // },
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {
-          refetch();
           toast.success("deleted successfully");
+          refetch();
         }
       });
-
   };
 
   return (
@@ -74,7 +57,6 @@ const AllBuyers = () => {
               <th></th>
               <th>Name</th>
               <th>Email</th>
-              <th>Verify</th>
               <th>Delete</th>
             </tr>
           </thead>
@@ -87,18 +69,7 @@ const AllBuyers = () => {
                 ) : (
                   <td>{buyer.name}</td>
                 )}
-                {/* <td>{buyer.name}</td> */}
                 <td>{buyer.email}</td>
-                <td>
-                  {buyer?.status !== "verified" && (
-                    <button
-                      onClick={() => handleVerification(buyer._id)}
-                      className="btn btn-xs btn-primary"
-                    >
-                      Verify
-                    </button>
-                  )}
-                </td>
                 <td>
                   <label
                     onClick={() => setDeletingBuyer(buyer)}

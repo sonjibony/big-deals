@@ -22,7 +22,7 @@ const FurnitureCard = ({ furniture, setBooking }) => {
     resalePrice,
     originalPrice,
     seller,
-    time,
+    date,
     condition,
     year,
     mobile,
@@ -31,27 +31,27 @@ const FurnitureCard = ({ furniture, setBooking }) => {
   } = furniture;
 
 
-  const {
-    data: sellers = [],
-    refetch,
-    isLoading,
-  } = useQuery({
-    queryKey: ["sellers"],
-    queryFn: async () => {
-      const res = await fetch("http://localhost:5000/users?option=seller");
-      const data = await res.json();
-      return data;
-    },
-  });
+  // const {
+  //   data: sellers = [],
+  //   refetch,
+  //   isLoading,
+  // } = useQuery({
+  //   queryKey: ["sellers"],
+  //   queryFn: async () => {
+  //     const res = await fetch("http://localhost:5000/users?option=seller");
+  //     const data = await res.json();
+  //     return data;
+  //   },
+  // });
 
 
 
-  if (isLoading) {
-    return <button className=" m-72 btn btn-square loading"></button>;
-  }
+  // if (isLoading) {
+  //   return <button className=" m-72 btn btn-square loading"></button>;
+  // }
 
   const handleReport = (id) => {
-    fetch(`http://localhost:5000/products/${id}`, {
+    fetch(`http://localhost:5000/reportedProducts/${id}`, {
       method: "PUT",
       // headers: {
       //     authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -76,7 +76,7 @@ const FurnitureCard = ({ furniture, setBooking }) => {
         <div className="flex justify-between gap-5 items-center">
           <h2 className="card-title text-2xl text-secondary">{name}</h2>
           {/* <h2 className="text-lg text-primary">Posted at: {`${new Date().getHours()}`} </h2>  */}
-          <h2 className="text-lg text-primary">Posted at: {`${new Date().toLocaleString()}`} </h2> 
+          <h2 className="text-lg text-primary">Posted at: {date} </h2> 
         </div>
 
         <div>

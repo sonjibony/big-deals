@@ -1,29 +1,28 @@
-import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
-import CheckoutForm from './CheckoutForm';
-
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import React from "react";
+import { useLoaderData } from "react-router-dom";
+import CheckoutForm from "./CheckoutForm";
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
 
 const Payment = () => {
-    const booking = useLoaderData();
-    const {product,price} = booking;
+  const booking = useLoaderData();
+  const { product, price } = booking;
 
-    return (
-        <div>
-        <h3 className="text-4xl">Payment for {product}</h3> 
-        <p className="text-xl">Please pay <strong>${price}</strong> </p>
-        <div className='w-96 my-12'>
+  return (
+    <div>
+      <h3 className="text-4xl">Payment for {product}</h3>
+      <p className="text-xl">
+        Please pay <strong>${price}</strong>{" "}
+      </p>
+      <div className="w-96 my-12">
         <Elements stripe={stripePromise}>
-   <CheckoutForm
-   booking={booking}
-   />
- </Elements>
-        </div>
-     </div>
-    );
+          <CheckoutForm booking={booking} />
+        </Elements>
+      </div>
+    </div>
+  );
 };
 
 export default Payment;

@@ -1,5 +1,5 @@
 import { GoogleAuthProvider } from "firebase/auth";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
@@ -19,9 +19,10 @@ const Login = () => {
   const navigate = useNavigate();
 
   const from = location.state?.from?.pathname || "/";
-  // if (token) {
-  //   navigate(from, { replace: true });
-  // }
+  useEffect(()=>{
+   if(!!token) navigate(from, { replace: true });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[token])
 
   //creating google provider
   const googleProvider = new GoogleAuthProvider();
@@ -32,6 +33,7 @@ const Login = () => {
       .then((result) => {
         const { name, email } = result.user;
         const user = { name, email, option: "buyer" };
+        
         fetch("http://localhost:5000/users", {
           method: "POST",
           headers: {

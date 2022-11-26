@@ -16,7 +16,7 @@ const AddProduct = () => {
 
   const navigate = useNavigate();
 
-  const { data: categories = [], isLoading } = useQuery({
+  const { data: categories = [], isLoading,refetch } = useQuery({
     queryKey: ["category"],
     queryFn: () =>
       fetch("http://localhost:5000/category").then((res) => res.json()),
@@ -37,16 +37,15 @@ const AddProduct = () => {
       used: data.used,
       year: data.used,
       gmail: data.gmail,
-      test:data.test
+      test: data.test,
     };
-    console.log(furniture);
 
-    //save doctor info in db
+    //adding products
     fetch("http://localhost:5000/furniture", {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        //         // authorization : `bearer ${localStorage.getItem('accessToken')}`
+        authorization : `bearer ${localStorage.getItem('accessToken')}`
       },
       body: JSON.stringify(furniture),
     })
@@ -55,6 +54,7 @@ const AddProduct = () => {
         if (data.acknowledged) {
           toast.success("Product added successfully!");
           navigate("/dashboard/myProducts");
+          refetch();
         }
         console.log(data);
       })
@@ -86,10 +86,6 @@ const AddProduct = () => {
           />
           {errors.name && <p className="text-red-600">{errors.name.message}</p>}
         </div>
-
-
-
-        
 
         <div className="form-control w-full max-w-xs">
           <label className="label">
@@ -220,13 +216,11 @@ const AddProduct = () => {
             <span className="label-text">Gmail</span>
           </label>
           <input
-          defaultValue={user?.email}
-            // type="gmail"
+            defaultValue={user?.email}
             {...register("gmail")}
             className="input input-bordered w-full max-w-xs"
             readOnly
           />
-          {/* {errors.name && <p className="text-red-600">{errors.name.message}</p>} */}
         </div>
 
         <div className="form-control w-full max-w-xs">
@@ -280,7 +274,6 @@ const AddProduct = () => {
           value="Add Product"
           type="submit"
         />
-        {/* {signUpError && <p className="text-red-600">{signUpError}</p>} */}
       </form>
     </div>
   );

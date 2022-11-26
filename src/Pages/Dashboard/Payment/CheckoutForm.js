@@ -13,7 +13,7 @@ const CheckoutForm = ({ booking }) => {
   const stripe = useStripe();
   const elements = useElements();
   const { price, email, product, name, _id } = booking;
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
   //creating payment intent
   useEffect(() => {
@@ -21,7 +21,7 @@ const navigate = useNavigate();
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        // authorization: `bearer ${localStorage.getItem('accessToken')}`
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
       },
       body: JSON.stringify({ price }),
     })
@@ -29,7 +29,7 @@ const navigate = useNavigate();
       .then((data) => setClientSecret(data.clientSecret));
   }, [price]);
 
-  //implementing booking
+  //taking payment using stripe
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!stripe || !elements) {
@@ -62,8 +62,6 @@ const navigate = useNavigate();
           billing_details: {
             name: name,
             email: email,
-            
-
           },
         },
       });
@@ -73,8 +71,8 @@ const navigate = useNavigate();
       return;
     }
 
+    //storing payment into db
     if (paymentIntent.status === "succeeded") {
-      //store in db
       const payment = {
         price,
         transactionId: paymentIntent.id,
@@ -87,16 +85,16 @@ const navigate = useNavigate();
         method: "POST",
         headers: {
           "content-type": "application/json",
-          //   authorization: `bearer ${localStorage.getItem('accessToken')}`
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
         },
-        body: JSON.stringify(payment),
+        body: JSON.stringify({ ...payment, product_id: booking.product_id }),
       })
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
           if (data.insertedId) {
             toast.success("Congrats! Your Payment Completed");
-            navigate('/dashboard/bookings')
+            navigate("/dashboard/bookings");
             setTransactionId(paymentIntent.id);
           }
         });

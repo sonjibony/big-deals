@@ -20,7 +20,7 @@ const AdvertisedProduct = () => {
 
     <>
     {
-        advertisedFurniture?.length  &&
+        advertisedFurniture?.length > 0  &&
         <div>
         <div>
           <h2 className=" text-center text-3xl text-primary font-bold">
@@ -39,6 +39,7 @@ const AdvertisedProduct = () => {
       </div>
       
     }
+
     
     </>
     

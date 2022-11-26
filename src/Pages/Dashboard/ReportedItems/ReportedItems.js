@@ -4,7 +4,6 @@ import toast from "react-hot-toast";
 import ConfirmationModal from "../../Shared/ConfirmationModal/ConfirmationModal";
 
 const ReportedItems = () => {
-
   const [deletingReportedItem, setDeletingReportedItem] = useState(null);
 
   //closing modal
@@ -12,6 +11,7 @@ const ReportedItems = () => {
     setDeletingReportedItem(null);
   };
 
+  //fetching data using react query
   const {
     data: reports = [],
     refetch,
@@ -19,37 +19,42 @@ const ReportedItems = () => {
   } = useQuery({
     queryKey: ["reports"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/reportedProducts?report=reported");
+      const res = await fetch(
+        "http://localhost:5000/reportedProducts?report=reported",
+        {
+          // headers: {
+          //   authorization: `bearer ${localStorage.getItem("accessToken")}`,
+          // },
+        }
+      );
       const data = await res.json();
       return data;
     },
   });
 
-  //implementing delete
-  const onDeletingReportedItem = report =>{
-    fetch(`http://localhost:5000/products/${report._id}`,{
-        method: 'DELETE',
-        // headers: {
-        //     authorization: `bearer ${localStorage.getItem('accessToken')}`
-        // }
+  //deleting reported product items
+  const onDeletingReportedItem = (report) => {
+    fetch(`http://localhost:5000/products/${report._id}`, {
+      method: "DELETE",
+      // headers: {
+      //   authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      // },
     })
-    .then(res => res.json())
-    .then(data => {
-        if(data.deletedCount> 0){
-            refetch();
-            toast.success('deleted successfully')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          toast.success("deleted successfully");
+          refetch();
         }
-    })
+      });
   };
-  
 
   if (isLoading) {
     return <button className=" m-72 btn btn-square loading"></button>;
   }
 
   return (
-
-        <div>
+    <div>
       <h2 className="text-3xl">Reported Items</h2>
       <div className="overflow-x-auto">
         <table className="table w-full">
@@ -67,14 +72,17 @@ const ReportedItems = () => {
               <tr className="hover" key={report._id}>
                 <th>{i + 1}</th>
 
-                  <td>{report.seller}</td>
-
+                <td>{report.seller}</td>
 
                 <td>{report.gmail}</td>
                 <td>{report.name}</td>
-               
+
                 <td>
-                <label onClick={() => setDeletingReportedItem(report)} htmlFor="confirmation-modal" className="btn btn-xs btn-error">
+                  <label
+                    onClick={() => setDeletingReportedItem(report)}
+                    htmlFor="confirmation-modal"
+                    className="btn btn-xs btn-error"
+                  >
                     Delete
                   </label>
                 </td>
@@ -84,21 +92,16 @@ const ReportedItems = () => {
         </table>
       </div>
 
-      {
-        deletingReportedItem && <ConfirmationModal
-        title={`Are you sure you want to delete?`}
-        message={`If you delete ${deletingReportedItem.name}, it can't be undone.`}
-        successAction = {onDeletingReportedItem}
-        successButtonName="Delete"
-        modalData = {deletingReportedItem}
-        closeModal={closeModal}
-        
-        >
-
-        </ConfirmationModal>
-      }
-
-
+      {deletingReportedItem && (
+        <ConfirmationModal
+          title={`Are you sure you want to delete?`}
+          message={`If you delete ${deletingReportedItem.name}, it can't be undone.`}
+          successAction={onDeletingReportedItem}
+          successButtonName="Delete"
+          modalData={deletingReportedItem}
+          closeModal={closeModal}
+        ></ConfirmationModal>
+      )}
     </div>
   );
 };

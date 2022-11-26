@@ -9,15 +9,13 @@ const MyProducts = () => {
   const { user } = useContext(AuthContext);
   const [deletingProduct, setDeletingProduct] = useState(null);
 
-//closing modal
-const closeModal = () =>{
+  //closing modal
+  const closeModal = () => {
     setDeletingProduct(null);
-  }
-
+  };
 
   //fetching data
   const url = `http://localhost:5000/products?gmail=${user?.email}`;
-
   const {
     data: products = [],
     isLoading,
@@ -25,12 +23,12 @@ const closeModal = () =>{
   } = useQuery({
     queryKey: ["products", user?.email],
     queryFn: async () => {
-      const res = await fetch(url)
-    //     , {
-    //     headers: {
-    //       authorization: `bearer ${localStorage.getItem("accessToken")}`,
-    //     },
-    //   });
+      const res = await fetch(url);
+      //     , {
+      //     headers: {
+      //       authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      //     },
+      //   });
       const data = await res.json();
       return data;
     },
@@ -56,7 +54,27 @@ const closeModal = () =>{
           toast.success("deleted successfully");
         }
       });
-  };
+}
+
+ //advertising
+    const handleAdvertising = (id) => {
+      fetch(`http://localhost:5000/products/${id}`, {
+        method: "PUT",
+        // headers: {
+        //     authorization: `bearer ${localStorage.getItem('accessToken')}`
+        // }
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.modifiedCount > 0) {
+            toast.success("Advertised Successfully");
+            refetch();
+          }
+        });
+    };
+
+
 
   return (
     <div>
@@ -98,15 +116,36 @@ const closeModal = () =>{
                       Delete
                     </label>
                   </td>
-                  <td>
-                    <label
-                      onClick={() => setDeletingProduct(product)}
-                      htmlFor="confirmation-modal"
-                      className="btn btn-xs btn-error"
+                  {/* <td>
+                    <button onClick={(() => handleAdvertising(id))} className="btn btn-xs btn-accent">Advertise </button>
+                  </td> */}
+
+{/* <td>
+                  {buyer?.status !== "verified" && (
+                    <button
+                      onClick={() => handleVerification(buyer._id)}
+                      className="btn btn-xs btn-primary"
                     >
-                      Advertise
-                    </label>
+                      Verify
+                    </button>
+                  )}
+                </td> */}
+
+                  <td>
+                
+                {
+                  product?.advertise?
+                  <p className="text-green-500 ">Advertised</p>
+                :
+                <button
+                  onClick={() =>handleAdvertising(product._id)}
+                  className="btn btn-xs btn-primary">
+                  Advertise
+                </button>
+                }
+
                   </td>
+
                   {/* <td>
                     {product.price && !product.paid && (
                       <Link to={`/dashboard/payment/${product._id}`}>
@@ -122,19 +161,16 @@ const closeModal = () =>{
           </tbody>
         </table>
       </div>
-      {
-        deletingProduct && <ConfirmationModal
-        title={`Are you sure you want to delete?`}
-        message={`If you delete ${deletingProduct.name}, it can't be undone.`}
-        successAction = {onDeletingProduct}
-        successButtonName="Delete"
-        modalData = {deletingProduct}
-        closeModal={closeModal}
-        
-        >
-
-        </ConfirmationModal>
-      }
+      {deletingProduct && (
+        <ConfirmationModal
+          title={`Are you sure you want to delete?`}
+          message={`If you delete ${deletingProduct.name}, it can't be undone.`}
+          successAction={onDeletingProduct}
+          successButtonName="Delete"
+          modalData={deletingProduct}
+          closeModal={closeModal}
+        ></ConfirmationModal>
+      )}
     </div>
   );
 };

@@ -80,6 +80,7 @@ const navigate = useNavigate();
         transactionId: paymentIntent.id,
         email,
         bookingId: _id,
+        product: product,
       };
 
       fetch("http://localhost:5000/payments", {

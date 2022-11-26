@@ -1,7 +1,19 @@
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const FurnitureCard = ({ furniture, setBooking }) => {
+
+  // class App extends React.Component{
+  //   state = {date: new Date()}
+  //   render(){
+  //     return 
+  //   }
+  // }
+
+  // const d = new Date();
+  // console.log('he visited me at',d);
+
   const {
     name,
     img,
@@ -15,19 +27,58 @@ const FurnitureCard = ({ furniture, setBooking }) => {
     year,
     mobile,
     description,
+    _id
   } = furniture;
+
+
+  const {
+    data: sellers = [],
+    refetch,
+    isLoading,
+  } = useQuery({
+    queryKey: ["sellers"],
+    queryFn: async () => {
+      const res = await fetch("http://localhost:5000/users?option=seller");
+      const data = await res.json();
+      return data;
+    },
+  });
+
+
+
+  if (isLoading) {
+    return <button className=" m-72 btn btn-square loading"></button>;
+  }
+
+  const handleReport = (id) => {
+    fetch(`http://localhost:5000/products/${id}`, {
+      method: "PUT",
+      // headers: {
+      //     authorization: `bearer ${localStorage.getItem('accessToken')}`
+      // }
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          toast.success("Reported Successfully");
+          // refetch();
+        }
+      });
+  };
+
   return (
     <div className="card rounded  lg:card-side bg-base-100 ">
       <figure>
         <img className="rounded max-w-[500px]" src={img} alt="Album" />
       </figure>
       <div className="card-body">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between gap-5 items-center">
           <h2 className="card-title text-2xl text-secondary">{name}</h2>
-          <h2 className="text-lg text-primary">Posted at: {time}</h2>
+          {/* <h2 className="text-lg text-primary">Posted at: {`${new Date().getHours()}`} </h2>  */}
+          <h2 className="text-lg text-primary">Posted at: {`${new Date().toLocaleString()}`} </h2> 
         </div>
 
-        
         <div>
           <p className="text-lg">
             {" "}
@@ -53,37 +104,58 @@ const FurnitureCard = ({ furniture, setBooking }) => {
             {condition}
           </p>
         </div>
-        <div>
-          <p className="text-xl">{description}</p>
-        </div>
-        <div className="flex justify-evenly">
+
+        
+          {/* <p className="text-lg">
+            {" "}
+            <span className="font-bold">Seller- 
+            </span>{
+                  seller?.status?
+                  <p>{seller}✅</p>
+                   :
+                  <p>{seller}</p>
+
+
+                }
+          </p> */}
+
+
           <p className="text-lg">
             {" "}
             <span className="font-bold">Seller- </span>
             {seller}
           </p>
-          <p className="text-lg font-bold">{location}</p>
           <p className="text-lg">
             {" "}
-            <span className="font-bold">Contact No- </span>
+            <span className="font-bold">Location- </span>
+            {location}
+          </p>
+          <p className="text-lg">
+            {" "}
+            <span className="font-bold">Contact- </span>
             {mobile}
           </p>
-        </div>
+        
+        <p className="text-lg">
+            {" "}
+            <span className="font-bold">Product Description- </span>
+            {description}
+          </p>
+
         <hr className="mt-5" />
         <div className="card-actions justify-evenly">
+          <label
+            htmlFor="booking-modal"
+            className="btn btn-sm btn-accent"
+            onClick={() => setBooking(furniture)}
+          >
+            Book Now
+          </label>
+          {/* <Link to="/">
+            <button className="btn btn-sm btn-accent">Go Back</button>
+          </Link> */}
+          <button onClick={() => handleReport(_id)} className="btn btn-sm btn-primary">Report to admin</button>{" "}
           
-          <label 
-          htmlFor="booking-modal" 
-          className="btn btn-sm btn-accent"
-          onClick={() => setBooking(furniture)}
-          >Book Now</label>
-
-          <Link to='/'>
-          <button className="btn btn-sm btn-accent">Go Back</button>
-          </Link>
-          <button className="btn btn-sm btn-primary">
-            Report to admin
-          </button>{" "}
         </div>
         <hr />
       </div>

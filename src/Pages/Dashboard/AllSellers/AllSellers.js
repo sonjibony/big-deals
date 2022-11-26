@@ -32,12 +32,14 @@ const AllSellers = () => {
     return <button className=" m-72 btn btn-square loading"></button>;
   }
 
+
+  //verifying seller
   const handleVerification = id =>{
     fetch(`http://localhost:5000/users/${id}`,{
         method: 'PUT',
-        // headers: {
-        //     authorization: `bearer ${localStorage.getItem('accessToken')}`
-        // }
+        headers: {
+            authorization: `bearer ${localStorage.getItem('accessToken')}`
+        }
 
     })
     .then(res => res.json())

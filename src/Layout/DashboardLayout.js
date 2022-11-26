@@ -25,6 +25,8 @@ const DashboardLayout = () => {
         />
         <div className="drawer-content ">
           <Outlet></Outlet>
+          {/* <label htmlFor="dashboard-drawer" className="btn btn-primary drawer-button lg:hidden">Open drawer</label> */}
+
         </div>
         <div className="drawer-side">
           <label htmlFor="dashboard-drawer" className="drawer-overlay"></label>

@@ -5,6 +5,7 @@ import Blog from "../../Pages/Blog/Blog";
 import AddProduct from "../../Pages/Dashboard/AddProduct/AddProduct";
 import AllBuyers from "../../Pages/Dashboard/AllBuyers/AllBuyers";
 import AllSellers from "../../Pages/Dashboard/AllSellers/AllSellers";
+import Dashboard from "../../Pages/Dashboard/Dashboard/Dashboard";
 import MyBookings from "../../Pages/Dashboard/MyBookings/MyBookings";
 import MyProducts from "../../Pages/Dashboard/MyProducts/MyProducts";
 import Payment from "../../Pages/Dashboard/Payment/Payment";
@@ -60,6 +61,10 @@ import SellerRoute from "../SellerRoute/SellerRoute";
         element: <PrivateRoute> <DashboardLayout></DashboardLayout> </PrivateRoute>,
         errorElement: <DisplayError></DisplayError>,
         children: [
+            {
+                path: '/dashboard',
+                element: <Dashboard></Dashboard>
+            },
             {
                 path: '/dashboard/bookings',
                 element:<BuyerRoute><MyBookings></MyBookings></BuyerRoute>

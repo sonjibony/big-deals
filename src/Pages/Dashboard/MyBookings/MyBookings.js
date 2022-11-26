@@ -32,6 +32,9 @@ const {data:orders =[], isLoading,refetch } = useQuery({
     }
 })
 
+
+console.log(orders);
+
 //spinner
 if(isLoading){
     return <button className=" m-72 btn btn-square loading"></button>;

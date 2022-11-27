@@ -37,7 +37,7 @@ const AddProduct = () => {
       used: data.used,
       year: data.used,
       gmail: data.gmail,
-      test: data.test,
+      status: "available"
     };
 
     //adding products
@@ -67,7 +67,7 @@ const AddProduct = () => {
 
   return (
     <div className="w-full p-7 mx-auto">
-      <h2 className="text-4xl">Add A Product</h2>
+      <h2 className="text-3xl my-6 text-center font-bold text-primary ">Add A Product</h2>
 
       <form
         className="grid gap-6 grid-cols-2"

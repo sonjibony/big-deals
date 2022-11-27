@@ -60,7 +60,7 @@ const MyBookings = () => {
 
   return (
     <div>
-      <h3 className="text-3xl mb-5">MY ORDERS</h3>
+      <h3 className="text-3xl my-6 text-center font-bold text-primary ">MY ORDERS</h3>
 
       <div className="overflow-x-auto">
         <table className="table w-full">
@@ -97,6 +97,7 @@ const MyBookings = () => {
                       Delete
                     </label>
                   </td>
+
                   <td>
                     {order.price && !order.paid && (
                       <Link to={`/dashboard/payment/${order._id}`}>

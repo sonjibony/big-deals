@@ -1,4 +1,3 @@
-
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -14,13 +13,13 @@ const SignUp = () => {
   } = useForm();
   const [signUpError, setSignUpError] = useState("");
   const { createUser, updateUser } = useContext(AuthContext);
-  const [createdUserEmail, setCreatedUserEmail]= useState('');
+  const [createdUserEmail, setCreatedUserEmail] = useState("");
   const [token] = useToken(createdUserEmail);
   const navigate = useNavigate();
 
-if(token){
-  navigate('/');
-}
+  if (token) {
+    navigate("/");
+  }
 
   //implementing sign up
   const handleSignUp = (data) => {
@@ -32,10 +31,10 @@ if(token){
         toast("User Created Successfully");
         const userInfo = {
           displayName: data.name,
-        }
+        };
         updateUser(userInfo)
           .then(() => {
-            saveUser(data.name,data.email,data.option);
+            saveUser(data.name, data.email, data.option);
             // setCreatedUserEmail(data.email);
           })
           .catch((error) => console.log(error));
@@ -47,26 +46,20 @@ if(token){
   };
 
   //saving user in db
-  const saveUser = (name,email,option) =>{
-    const user = {name, email, option};
-    fetch('http://localhost:5000/users',{
-      method: 'POST',
+  const saveUser = (name, email, option) => {
+    const user = { name, email, option };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
       headers: {
-        'content-type': 'application/json'
+        "content-type": "application/json",
       },
-      body: JSON.stringify(user)
+      body: JSON.stringify(user),
     })
-    .then(res => res.json())
-    .then(data => {
-      setCreatedUserEmail(email);
-      // console.log('saved user',data);
-      // navigate("/");
-
-    })
-  }
-
-
-
+      .then((res) => res.json())
+      .then((data) => {
+        setCreatedUserEmail(email);
+      });
+  };
 
   return (
     <div className="h-[800px]  flex justify-center items-center">

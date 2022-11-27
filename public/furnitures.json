@@ -1,6 +1,6 @@
 [
   {
-    "category": "Sofa-set",
+    "category": "Sofa",
     "name": "Leather Sofa",
     "img": "https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?cs=srgb&dl=pexels-martin-p%C3%A9chy-1866149.jpg&fm=jpg&h=400&w=550&fit=crop&_gl=1*11wgt9a*_ga*NDAwNTIyNDM1LjE2NTg5OTQ3NzI.*_ga_8JE65Q40S6*MTY2OTI3MTMzMS4yMC4xLjE2NjkyNzIyMzYuMC4wLjA.",
     "location": "Mirpur",
@@ -8,14 +8,15 @@
     "resalePrice": "300",
     "originalPrice": "600",
     "seller": "Luna",
-    "time": "2.00",
     "condition": "Good",
     "year": "2019",
     "mobile": "01234",
-    "description": "Selling it because its an old model. Its condition is still good as new."
+    "description": "Selling it because its an old model. Its condition is still good as new.",
+    "date": "11/27/2022,11:04:51 AM",
+    "status": "available"
   },
   {
-    "category":"Sofa-set",
+    "category":"Sofa",
     "name": "Luxury Sofa",
     "img": "https://images.pexels.com/photos/4846097/pexels-photo-4846097.jpeg?cs=srgb&dl=pexels-rachel-claire-4846097.jpg&fm=jpg&h=400&w=550&fit=crop&_gl=1*l7qh4s*_ga*NDAwNTIyNDM1LjE2NTg5OTQ3NzI.*_ga_8JE65Q40S6*MTY2OTI3MTMzMS4yMC4xLjE2NjkyNzIyOTcuMC4wLjA.",
     "location": "Uttora",
@@ -23,11 +24,12 @@
     "resalePrice": "450",
     "originalPrice": "600",
     "seller": "Hanna",
-    "time": "2.00",
     "condition": "Excellent",
     "year": "2021",
     "mobile": "01234",
-    "description": "Selling it because the color does not go with my living room."
+    "description": "Selling it because the color does not go with my living room.",
+    "date": "11/27/2022,11:04:51 AM",
+    "status": "available"
   },
 
   {
@@ -39,11 +41,12 @@
     "resalePrice": "120",
     "originalPrice": "250",
     "seller": "Kitty",
-    "time": "2.00",
     "condition": "Fair",
     "year": "2018",
     "mobile": "01234",
-    "description": "Selling it because I don't need it anymore."
+    "description": "Selling it because I don't need it anymore.",
+    "date": "11/27/2022,11:04:51 AM",
+    "status": "available"
   },
   {
     "category": "Bed",
@@ -54,11 +57,12 @@
     "resalePrice": "120",
     "originalPrice": "250",
     "seller": "Nora",
-    "time": "2.00",
     "condition": "Excellent",
     "year": "2021",
     "mobile": "01234",
-    "description": "Selling it because I don't need it anymore."
+    "description": "Selling it because I don't need it anymore.",
+    "date": "11/27/2022,11:04:51 AM",
+    "status": "available"
   },
 
   {
@@ -70,11 +74,12 @@
     "resalePrice": "450",
     "originalPrice": "600",
     "seller": "Joe",
-    "time": "2.00",
     "condition": "Excellent",
     "year": "2019",
     "mobile": "01234",
-    "description": "Selling it because of retirement."
+    "description": "Selling it because of retirement.",
+    "date": "11/27/2022,11:04:51 AM",
+    "status": "available"
   },
   {
     "category": "Chair",
@@ -85,11 +90,12 @@
     "resalePrice": "150",
     "originalPrice": "300",
     "seller": "Lucy",
-    "time": "2.00",
     "condition": "Fair",
     "year": "2019",
     "mobile": "01234",
-    "description": "Selling it because it got old."
+    "description": "Selling it because it got old.",
+    "date": "11/27/2022,11:04:51 AM",
+    "status": "available"
   },
   {
     "category": "Table-Tools",
@@ -100,11 +106,12 @@
     "resalePrice": "250",
     "originalPrice": "400",
     "seller": "Methew",
-    "time": "2.00",
     "condition": "Good",
     "year": "2018",
     "mobile": "01234",
-    "description": "Selling it because got a large table."
+    "description": "Selling it because got a large table.",
+    "date": "11/27/2022,11:04:51 AM",
+    "status": "available"
   },
   {
     "category": "Table-Tools",
@@ -115,10 +122,11 @@
     "resalePrice": "120",
     "originalPrice": "250",
     "seller": "Eve",
-    "time": "2.00",
     "condition": "Good",
     "year": "2021",
     "mobile": "01234",
-    "description": "Selling it because I don't need it anymore."
+    "description": "Selling it because I don't need it anymore.",
+    "date": "11/27/2022,11:04:51 AM",
+    "status": "available"
   }
 ]

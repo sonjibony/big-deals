@@ -22,15 +22,13 @@ const MyProducts = () => {
   } = useQuery({
     queryKey: ["products", user?.email],
     queryFn: async () => {
-      const res = await fetch(url, {
-        // headers: {
-        //   authorization: `bearer ${localStorage.getItem("accessToken")}`,
-        // },
-      });
+      const res = await fetch(url, {});
       const data = await res.json();
       return data;
     },
   });
+
+  console.log(products);
 
   //spinner
   if (isLoading) {
@@ -41,9 +39,6 @@ const MyProducts = () => {
   const onDeletingProduct = (order) => {
     fetch(`http://localhost:5000/products/${order._id}`, {
       method: "DELETE",
-      // headers: {
-      //   authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      // },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -58,9 +53,6 @@ const MyProducts = () => {
   const handleAdvertising = (id) => {
     fetch(`http://localhost:5000/products/${id}`, {
       method: "PUT",
-      // headers: {
-      //   authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      // },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -74,14 +66,14 @@ const MyProducts = () => {
 
   return (
     <div>
-      <h3 className="text-3xl mb-5">MY PRODUCTS</h3>
+      <h3 className="text-3xl my-6 text-center font-bold text-primary">MY PRODUCTS</h3>
 
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>
             <tr>
               <th></th>
-              <th>Avatar</th>
+              <th>Product</th>
               <th>Price</th>
               <th>Status</th>
               <th>Delete</th>
@@ -93,15 +85,10 @@ const MyProducts = () => {
               products?.map((product, i) => (
                 <tr key={i} className="hover">
                   <th>{i + 1}</th>
-                  <td>
-                    <div className="avatar">
-                      <div className="w-12 rounded-full">
-                        <img src={product.img} alt="" />
-                      </div>
-                    </div>
-                  </td>
-                  <td>{product.resalePrice}</td>
                   <td>{product.name}</td>
+                  <td>{product.resalePrice}</td>
+
+                  <td>{product.status}</td>
 
                   <td>
                     <label

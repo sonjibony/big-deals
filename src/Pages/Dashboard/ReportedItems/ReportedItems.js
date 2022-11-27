@@ -20,12 +20,7 @@ const ReportedItems = () => {
     queryKey: ["reports"],
     queryFn: async () => {
       const res = await fetch(
-        "http://localhost:5000/reportedProducts?report=reported",
-        {
-          // headers: {
-          //   authorization: `bearer ${localStorage.getItem("accessToken")}`,
-          // },
-        }
+        "http://localhost:5000/reportedProducts?report=reported"
       );
       const data = await res.json();
       return data;
@@ -36,9 +31,6 @@ const ReportedItems = () => {
   const onDeletingReportedItem = (report) => {
     fetch(`http://localhost:5000/products/${report._id}`, {
       method: "DELETE",
-      // headers: {
-      //   authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      // },
     })
       .then((res) => res.json())
       .then((data) => {

@@ -79,6 +79,7 @@ const CheckoutForm = ({ booking }) => {
         email,
         bookingId: _id,
         product: product,
+        status: "sold",
       };
 
       fetch("http://localhost:5000/payments", {

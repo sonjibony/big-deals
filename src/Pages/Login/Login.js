@@ -19,10 +19,10 @@ const Login = () => {
   const navigate = useNavigate();
 
   const from = location.state?.from?.pathname || "/";
-  useEffect(()=>{
-   if(!!token) navigate(from, { replace: true });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[token])
+  useEffect(() => {
+    if (!!token) navigate(from, { replace: true });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [token]);
 
   //creating google provider
   const googleProvider = new GoogleAuthProvider();
@@ -33,7 +33,7 @@ const Login = () => {
       .then((result) => {
         const { name, email } = result.user;
         const user = { name, email, option: "buyer" };
-        
+
         fetch("http://localhost:5000/users", {
           method: "POST",
           headers: {
@@ -44,9 +44,7 @@ const Login = () => {
           .then((res) => res.json())
           .then((data) => {
             setLoginUserEmail(email);
-            // console.log('saved user',data);
-            // navigate("/");
-            // navigate(from, { replace: true });
+            console.log(data);
           });
       })
       .catch((error) => console.error(error));
@@ -59,9 +57,8 @@ const Login = () => {
     signIn(data.email, data.password)
       .then((result) => {
         const user = result.user;
-        // console.log(user);
+        console.log(user);
         setLoginUserEmail(data.email);
-        // navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error.message);

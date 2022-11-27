@@ -52,9 +52,6 @@ const AllSellers = () => {
   const handleDeleteSeller = (seller) => {
     fetch(`http://localhost:5000/users/${seller._id}`, {
       method: "DELETE",
-      // headers: {
-      //   authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      // },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -66,7 +63,7 @@ const AllSellers = () => {
   };
   return (
     <div>
-      <h2 className="text-3xl">All </h2>
+      <h2 className="text-3xl my-6 text-center font-bold text-primary ">All Seller </h2>
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>

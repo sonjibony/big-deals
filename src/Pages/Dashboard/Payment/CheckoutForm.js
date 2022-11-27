@@ -17,7 +17,7 @@ const CheckoutForm = ({ booking }) => {
 
   //creating payment intent
   useEffect(() => {
-    fetch("http://localhost:5000/create-payment-intent", {
+    fetch("https://big-deal-server.vercel.app/create-payment-intent", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -82,7 +82,7 @@ const CheckoutForm = ({ booking }) => {
         status: "sold",
       };
 
-      fetch("http://localhost:5000/payments", {
+      fetch("https://big-deal-server.vercel.app/payments", {
         method: "POST",
         headers: {
           "content-type": "application/json",

@@ -14,7 +14,7 @@ const MyProducts = () => {
   };
 
   //fetching added product data according to mail
-  const url = `http://localhost:5000/products?gmail=${user?.email}`;
+  const url = `https://big-deal-server.vercel.app/products?gmail=${user?.email}`;
   const {
     data: products = [],
     isLoading,
@@ -37,7 +37,7 @@ const MyProducts = () => {
 
   //deleting my added products
   const onDeletingProduct = (order) => {
-    fetch(`http://localhost:5000/products/${order._id}`, {
+    fetch(`https://big-deal-server.vercel.app/products/${order._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -51,7 +51,7 @@ const MyProducts = () => {
 
   //advertising my added products
   const handleAdvertising = (id) => {
-    fetch(`http://localhost:5000/products/${id}`, {
+    fetch(`https://big-deal-server.vercel.app/products/${id}`, {
       method: "PUT",
     })
       .then((res) => res.json())
@@ -66,7 +66,9 @@ const MyProducts = () => {
 
   return (
     <div>
-      <h3 className="text-3xl my-6 text-center font-bold text-primary">MY PRODUCTS</h3>
+      <h3 className="text-3xl my-6 text-center font-bold text-primary">
+        MY PRODUCTS
+      </h3>
 
       <div className="overflow-x-auto">
         <table className="table w-full">

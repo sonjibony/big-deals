@@ -15,7 +15,7 @@ const MyBookings = () => {
   };
 
   //fetching data using query
-  const url = `http://localhost:5000/bookings?email=${user?.email}`;
+  const url = `https://big-deal-server.vercel.app/bookings?email=${user?.email}`;
 
   const {
     data: orders = [],
@@ -43,7 +43,7 @@ const MyBookings = () => {
 
   //implementing deleting booking order
   const onDeletingOrder = (order) => {
-    fetch(`http://localhost:5000/bookings/${order._id}`, {
+    fetch(`https://big-deal-server.vercel.app/bookings/${order._id}`, {
       method: "DELETE",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -60,7 +60,9 @@ const MyBookings = () => {
 
   return (
     <div>
-      <h3 className="text-3xl my-6 text-center font-bold text-primary ">MY ORDERS</h3>
+      <h3 className="text-3xl my-6 text-center font-bold text-primary ">
+        MY ORDERS
+      </h3>
 
       <div className="overflow-x-auto">
         <table className="table w-full">

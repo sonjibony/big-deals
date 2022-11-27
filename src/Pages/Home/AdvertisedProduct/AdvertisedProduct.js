@@ -7,7 +7,7 @@ const AdvertisedProduct = () => {
     queryKey: ["advertisedFurniture"],
     queryFn: async () => {
       const res = await fetch(
-        "http://localhost:5000/advertisedProducts?advertise=advertised",
+        "https://big-deal-server.vercel.app/advertisedProducts?advertise=advertised",
         {
           headers: {
             authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -27,13 +27,14 @@ const AdvertisedProduct = () => {
   return (
     <div className="my-6">
       {advertisedFurniture?.length > 0 && (
-        <div >
+        <div>
           <div>
             <h2 className=" text-center text-3xl text-primary font-bold my-4">
               ADVERTISED PRODUCTS
             </h2>
             <h3 className="text-lg text-center">
-              Here are some of our advertised product. You can visit the given category of the product to see product detail and to buy them.
+              Here are some of our advertised product. You can visit the given
+              category of the product to see product detail and to buy them.
             </h3>
           </div>
           <div className="w-11/12 mx-auto grid gap-6  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">

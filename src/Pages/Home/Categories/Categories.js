@@ -7,7 +7,9 @@ const Categories = () => {
   const { data: categories = [], isLoading } = useQuery({
     queryKey: ["category"],
     queryFn: () =>
-      fetch("http://localhost:5000/category").then((res) => res.json()),
+      fetch("https://big-deal-server.vercel.app/category").then((res) =>
+        res.json()
+      ),
   });
   if (isLoading) {
     return <button className=" m-72 btn btn-square loading"></button>;

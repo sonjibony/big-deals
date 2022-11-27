@@ -16,10 +16,16 @@ const AddProduct = () => {
 
   const navigate = useNavigate();
 
-  const { data: categories = [], isLoading,refetch } = useQuery({
+  const {
+    data: categories = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["category"],
     queryFn: () =>
-      fetch("http://localhost:5000/category").then((res) => res.json()),
+      fetch("https://big-deal-server.vercel.app/category").then((res) =>
+        res.json()
+      ),
   });
 
   const handleAddProduct = (data) => {
@@ -37,15 +43,15 @@ const AddProduct = () => {
       used: data.used,
       year: data.used,
       gmail: data.gmail,
-      status: "available"
+      status: "available",
     };
 
     //adding products
-    fetch("http://localhost:5000/furniture", {
+    fetch("https://big-deal-server.vercel.app/furniture", {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        authorization : `bearer ${localStorage.getItem('accessToken')}`
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
       },
       body: JSON.stringify(furniture),
     })
@@ -67,7 +73,9 @@ const AddProduct = () => {
 
   return (
     <div className="w-full p-7 mx-auto">
-      <h2 className="text-3xl my-6 text-center font-bold text-primary ">Add A Product</h2>
+      <h2 className="text-3xl my-6 text-center font-bold text-primary ">
+        Add A Product
+      </h2>
 
       <form
         className="grid gap-6 grid-cols-2"

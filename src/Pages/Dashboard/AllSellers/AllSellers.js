@@ -19,7 +19,9 @@ const AllSellers = () => {
   } = useQuery({
     queryKey: ["sellers"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/users?option=seller");
+      const res = await fetch(
+        "https://big-deal-server.vercel.app/users?option=seller"
+      );
       const data = await res.json();
       return data;
     },
@@ -32,7 +34,7 @@ const AllSellers = () => {
 
   //verifying seller
   const handleVerification = (id) => {
-    fetch(`http://localhost:5000/users/${id}`, {
+    fetch(`https://big-deal-server.vercel.app/users/${id}`, {
       method: "PUT",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -50,7 +52,7 @@ const AllSellers = () => {
 
   //implementing delete
   const handleDeleteSeller = (seller) => {
-    fetch(`http://localhost:5000/users/${seller._id}`, {
+    fetch(`https://big-deal-server.vercel.app/users/${seller._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -63,7 +65,9 @@ const AllSellers = () => {
   };
   return (
     <div>
-      <h2 className="text-3xl my-6 text-center font-bold text-primary ">All Seller </h2>
+      <h2 className="text-3xl my-6 text-center font-bold text-primary ">
+        All Seller{" "}
+      </h2>
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>

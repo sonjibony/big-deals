@@ -20,7 +20,7 @@ const FurnitureCard = ({ furniture, setBooking }) => {
   } = furniture;
 
   const handleReport = (id) => {
-    fetch(`http://localhost:5000/reportedProducts/${id}`, {
+    fetch(`https://big-deal-server.vercel.app/reportedProducts/${id}`, {
       method: "PUT",
     })
       .then((res) => res.json())
@@ -44,7 +44,7 @@ const FurnitureCard = ({ furniture, setBooking }) => {
             <p className="text-lg">
               {" "}
               <span className="font-bold">Seller- </span>
-              {seller} {isVerified?"✅":""}
+              {seller} {isVerified ? "✅" : ""}
             </p>{" "}
           </div>
         </div>

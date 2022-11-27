@@ -20,7 +20,7 @@ const ReportedItems = () => {
     queryKey: ["reports"],
     queryFn: async () => {
       const res = await fetch(
-        "http://localhost:5000/reportedProducts?report=reported"
+        "https://big-deal-server.vercel.app/reportedProducts?report=reported"
       );
       const data = await res.json();
       return data;
@@ -29,7 +29,7 @@ const ReportedItems = () => {
 
   //deleting reported product items
   const onDeletingReportedItem = (report) => {
-    fetch(`http://localhost:5000/products/${report._id}`, {
+    fetch(`https://big-deal-server.vercel.app/products/${report._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

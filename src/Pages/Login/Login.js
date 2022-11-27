@@ -34,7 +34,7 @@ const Login = () => {
         const { name, email } = result.user;
         const user = { name, email, option: "buyer" };
 
-        fetch("http://localhost:5000/users", {
+        fetch("https://big-deal-server.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

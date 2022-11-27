@@ -41,7 +41,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          axios(`http://localhost:5000/furniture/${params.name}`),
+          axios(`https://big-deal-server.vercel.app/furniture/${params.name}`),
       },
       {
         path: "/login",
@@ -91,7 +91,7 @@ const router = createBrowserRouter([
           </BuyerRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/bookings/${params.id}`),
+          fetch(`https://big-deal-server.vercel.app/bookings/${params.id}`),
       },
       {
         path: "/dashboard/addProducts",

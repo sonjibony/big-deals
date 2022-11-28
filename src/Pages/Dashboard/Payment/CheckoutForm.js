@@ -17,14 +17,17 @@ const CheckoutForm = ({ booking }) => {
 
   //creating payment intent
   useEffect(() => {
-    fetch("https://big-deal-server.vercel.app/create-payment-intent", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify({ price }),
-    })
+    fetch(
+      "https://big-deal-server-sonjibony.vercel.app/create-payment-intent",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify({ price }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
   }, [price]);
@@ -82,7 +85,7 @@ const CheckoutForm = ({ booking }) => {
         status: "sold",
       };
 
-      fetch("https://big-deal-server.vercel.app/payments", {
+      fetch("https://big-deal-server-sonjibony.vercel.app/payments", {
         method: "POST",
         headers: {
           "content-type": "application/json",

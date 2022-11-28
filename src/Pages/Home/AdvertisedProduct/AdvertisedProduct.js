@@ -7,7 +7,7 @@ const AdvertisedProduct = () => {
     queryKey: ["advertisedFurniture"],
     queryFn: async () => {
       const res = await fetch(
-        "https://big-deal-server.vercel.app/advertisedProducts?advertise=advertised",
+        "https://big-deal-server-sonjibony.vercel.app/advertisedProducts?advertise=advertised",
         {
           headers: {
             authorization: `bearer ${localStorage.getItem("accessToken")}`,

@@ -23,8 +23,8 @@ const AddProduct = () => {
   } = useQuery({
     queryKey: ["category"],
     queryFn: () =>
-      fetch("https://big-deal-server.vercel.app/category").then((res) =>
-        res.json()
+      fetch("https://big-deal-server-sonjibony.vercel.app/category").then(
+        (res) => res.json()
       ),
   });
 
@@ -47,7 +47,7 @@ const AddProduct = () => {
     };
 
     //adding products
-    fetch("https://big-deal-server.vercel.app/furniture", {
+    fetch("https://big-deal-server-sonjibony.vercel.app/furniture", {
       method: "POST",
       headers: {
         "content-type": "application/json",

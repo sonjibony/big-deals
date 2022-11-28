@@ -20,9 +20,12 @@ const FurnitureCard = ({ furniture, setBooking }) => {
   } = furniture;
 
   const handleReport = (id) => {
-    fetch(`https://big-deal-server.vercel.app/reportedProducts/${id}`, {
-      method: "PUT",
-    })
+    fetch(
+      `https://big-deal-server-sonjibony.vercel.app/reportedProducts/${id}`,
+      {
+        method: "PUT",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

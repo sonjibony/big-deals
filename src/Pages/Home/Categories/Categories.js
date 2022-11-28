@@ -7,8 +7,8 @@ const Categories = () => {
   const { data: categories = [], isLoading } = useQuery({
     queryKey: ["category"],
     queryFn: () =>
-      fetch("https://big-deal-server.vercel.app/category").then((res) =>
-        res.json()
+      fetch("https://big-deal-server-sonjibony.vercel.app/category").then(
+        (res) => res.json()
       ),
   });
   if (isLoading) {

@@ -5,7 +5,7 @@ const useBuyer = (email) => {
   const [isBuyerLoading, setIsBuyerLoading] = useState(true);
   useEffect(() => {
     if (email) {
-      fetch(`https://big-deal-server.vercel.app/users/buyer/${email}`)
+      fetch(`https://big-deal-server-sonjibony.vercel.app/users/buyer/${email}`)
         .then((res) => res.json())
         .then((data) => {
           // console.log(data);

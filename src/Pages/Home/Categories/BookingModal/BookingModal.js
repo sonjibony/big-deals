@@ -29,7 +29,7 @@ const BookingModal = ({ booking, setBooking }) => {
       product_id: _id,
     };
 
-    fetch("https://big-deal-server.vercel.app/bookings", {
+    fetch("https://big-deal-server-sonjibony.vercel.app/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -20,7 +20,7 @@ const AllSellers = () => {
     queryKey: ["sellers"],
     queryFn: async () => {
       const res = await fetch(
-        "https://big-deal-server.vercel.app/users?option=seller"
+        "https://big-deal-server-sonjibony.vercel.app/users?option=seller"
       );
       const data = await res.json();
       return data;
@@ -34,7 +34,7 @@ const AllSellers = () => {
 
   //verifying seller
   const handleVerification = (id) => {
-    fetch(`https://big-deal-server.vercel.app/users/${id}`, {
+    fetch(`https://big-deal-server-sonjibony.vercel.app/users/${id}`, {
       method: "PUT",
       headers: {
         authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -52,7 +52,7 @@ const AllSellers = () => {
 
   //implementing delete
   const handleDeleteSeller = (seller) => {
-    fetch(`https://big-deal-server.vercel.app/users/${seller._id}`, {
+    fetch(`https://big-deal-server-sonjibony.vercel.app/users/${seller._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

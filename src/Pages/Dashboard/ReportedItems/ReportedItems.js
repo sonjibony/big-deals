@@ -20,7 +20,7 @@ const ReportedItems = () => {
     queryKey: ["reports"],
     queryFn: async () => {
       const res = await fetch(
-        "https://big-deal-server.vercel.app/reportedProducts?report=reported"
+        "https://big-deal-server-sonjibony.vercel.app/reportedProducts?report=reported"
       );
       const data = await res.json();
       return data;
@@ -29,9 +29,12 @@ const ReportedItems = () => {
 
   //deleting reported product items
   const onDeletingReportedItem = (report) => {
-    fetch(`https://big-deal-server.vercel.app/products/${report._id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://big-deal-server-sonjibony.vercel.app/products/${report._id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {

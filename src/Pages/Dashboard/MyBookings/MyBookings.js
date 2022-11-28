@@ -15,7 +15,7 @@ const MyBookings = () => {
   };
 
   //fetching data using query
-  const url = `https://big-deal-server.vercel.app/bookings?email=${user?.email}`;
+  const url = `https://big-deal-server-sonjibony.vercel.app/bookings?email=${user?.email}`;
 
   const {
     data: orders = [],
@@ -43,12 +43,15 @@ const MyBookings = () => {
 
   //implementing deleting booking order
   const onDeletingOrder = (order) => {
-    fetch(`https://big-deal-server.vercel.app/bookings/${order._id}`, {
-      method: "DELETE",
-      headers: {
-        authorization: `bearer ${localStorage.getItem("accessToken")}`,
-      },
-    })
+    fetch(
+      `https://big-deal-server-sonjibony.vercel.app/bookings/${order._id}`,
+      {
+        method: "DELETE",
+        headers: {
+          authorization: `bearer ${localStorage.getItem("accessToken")}`,
+        },
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {

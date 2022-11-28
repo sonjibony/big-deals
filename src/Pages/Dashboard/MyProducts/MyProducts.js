@@ -14,7 +14,7 @@ const MyProducts = () => {
   };
 
   //fetching added product data according to mail
-  const url = `https://big-deal-server.vercel.app/products?gmail=${user?.email}`;
+  const url = `https://big-deal-server-sonjibony.vercel.app/products?gmail=${user?.email}`;
   const {
     data: products = [],
     isLoading,
@@ -37,9 +37,12 @@ const MyProducts = () => {
 
   //deleting my added products
   const onDeletingProduct = (order) => {
-    fetch(`https://big-deal-server.vercel.app/products/${order._id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://big-deal-server-sonjibony.vercel.app/products/${order._id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {
@@ -51,7 +54,7 @@ const MyProducts = () => {
 
   //advertising my added products
   const handleAdvertising = (id) => {
-    fetch(`https://big-deal-server.vercel.app/products/${id}`, {
+    fetch(`https://big-deal-server-sonjibony.vercel.app/products/${id}`, {
       method: "PUT",
     })
       .then((res) => res.json())

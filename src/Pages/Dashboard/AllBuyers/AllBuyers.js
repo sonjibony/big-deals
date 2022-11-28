@@ -20,7 +20,7 @@ const AllBuyers = () => {
     queryKey: ["buyers"],
     queryFn: async () => {
       const res = await fetch(
-        "https://big-deal-server.vercel.app/users?option=buyer"
+        "https://big-deal-server-sonjibony.vercel.app/users?option=buyer"
       );
       const data = await res.json();
       return data;
@@ -34,7 +34,7 @@ const AllBuyers = () => {
 
   //implementing delete buyers
   const handleDeleteBuyer = (buyer) => {
-    fetch(`https://big-deal-server.vercel.app/users/${buyer._id}`, {
+    fetch(`https://big-deal-server-sonjibony.vercel.app/users/${buyer._id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

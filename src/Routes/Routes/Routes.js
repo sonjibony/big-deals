@@ -67,8 +67,7 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: (
       <PrivateRoute>
-        {" "}
-        <DashboardLayout></DashboardLayout>{" "}
+        <DashboardLayout></DashboardLayout>
       </PrivateRoute>
     ),
     errorElement: <DisplayError></DisplayError>,

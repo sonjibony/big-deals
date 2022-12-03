@@ -1,7 +1,7 @@
 import React from "react";
 
 const AdvertisedProductCard = ({ furniture }) => {
-  const { name, img, originalPrice, seller, date,category, isVerified } = furniture;
+  const { name, img, resalePrice, seller, date,category, isVerified } = furniture;
 
   return (
     <div className="card card-compact w-96 bg-base-100 shadow-xl mt-4">
@@ -21,7 +21,7 @@ const AdvertisedProductCard = ({ furniture }) => {
         </div>
         <p>
           {" "}
-          <span className="font-bold">Price: </span>${originalPrice}
+          <span className="font-bold">Price: </span>${resalePrice}
         </p>
         <p>
           {" "}

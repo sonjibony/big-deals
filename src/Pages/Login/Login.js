@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 import useToken from "../../hooks/useToken";
+
 const Login = () => {
   const {
     register,
@@ -44,7 +45,6 @@ const Login = () => {
           .then((res) => res.json())
           .then((data) => {
             setLoginUserEmail(email);
-            console.log(data);
           });
       })
       .catch((error) => console.error(error));

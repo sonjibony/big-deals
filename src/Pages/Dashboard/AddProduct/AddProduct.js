@@ -120,6 +120,7 @@ const AddProduct = () => {
             type="number"
             {...register("originalPrice", {
               required: "Price is required",
+              min: 1,
             })}
             className="input input-bordered w-full max-w-xs"
           />
@@ -136,6 +137,7 @@ const AddProduct = () => {
             type="number"
             {...register("resalePrice", {
               required: "This  is required",
+              min: 1,
             })}
             className="input input-bordered w-full max-w-xs"
           />

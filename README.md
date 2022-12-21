@@ -30,3 +30,7 @@ This project was build with react [live link](https://big-dea1.netlify.app/).
  
 ## Live link of the project https://big-dea1.netlify.app/
 
+### Admin Information 
+Gmail: vecna@gmail.com
+Password: zxcvbnM0#
+
